@@ -1,0 +1,25 @@
+- hosts: wethinkcode
+  become: true
+  tasks:
+    - name: Get user's home directory path
+      shell: "echo ~{{ user }}"
+      register: user_home_dir
+    - name: Remove user home directory
+      file:
+        path: "{{ user_home_dir.stdout }}"
+        state: absent
+    - name: Recreate user's home directory
+      user:
+        name: "{{ user }}"
+        create_home: true
+        state: present
+    - name: Recreate user's home xdg standard directories
+      shell: "xdg-user-dirs-update --force"
+      become: false
+    - name: Upload admin's public key
+      authorized_key:
+        user: "{{ user }}"
+        state: present
+        key: '{{ item }}'
+      with_file:
+        - public_keys/test-host
