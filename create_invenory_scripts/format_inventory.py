@@ -14,3 +14,4 @@ file = open("../inventory", "w")
 file.write(contents)
 file.close()
 
+os.system("rm inventory")
