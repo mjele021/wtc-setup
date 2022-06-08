@@ -24,7 +24,7 @@ Lets explain the important files this repo houses:
  <dt><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html">playbook.yml</a><dt>
  <dd>This is where the ansible tasks are listed. The tasks run in order and if a task fails the next one in sequence is not ran. Each task has a description.<dd>
  
- <dt><a href="create_invenory_scripts">create_inventory_scripts</a><dt>
+ <dt><a href="create_inventory_scripts">create_inventory_scripts</a><dt>
  <dd>Scripts attempting to get all iMacs on campus that are listening for ssh connections and append them to the inventory file.<dd>
 </dl>
 
