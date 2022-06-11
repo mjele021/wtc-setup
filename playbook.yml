@@ -28,4 +28,5 @@
         state: present
         key: '{{ item }}'
       with_file:
-        - public_keys/test-host
+        - public_keys/mphojele-personal
+        - public_keys/mphojele-work
