@@ -19,9 +19,6 @@
         name: "{{ user }}"
         create_home: true
         state: present
-    - name: Recreate user's home xdg standard directories
-      shell: "xdg-user-dirs-update --force"
-      become: false
     - name: Upload admin's public key
       authorized_key:
         user: "{{ user }}"
@@ -30,3 +27,7 @@
       with_file:
         - public_keys/mphojele-personal
         - public_keys/mphojele-work
+    - name: Recreate user's home xdg standard directories
+      shell: "xdg-user-dirs-update --force"
+      become: true
+      become_user: "{{ user }}"
